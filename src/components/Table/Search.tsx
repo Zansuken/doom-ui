@@ -1,7 +1,7 @@
 import { FC, memo, useContext, useCallback } from "react";
 import Input from "../Input/Input";
 import { TableContext, TableContextType } from "./TableContext";
-import CrossIcon from "../../assets/icons/cross.svg";
+import CrossIcon from "../../../assets/icons/cross.svg";
 import { useSearchParams } from "react-router-dom";
 import { debounce } from "lodash";
 import { TableRowType } from "./Table";
