@@ -12,6 +12,19 @@ npm install doom-ui
 
 ## Components examples
 
+### Button
+
+```tsx
+<Button
+type="submit"
+buttonProps={{
+    disabled: isSubmitDisabled,
+}}
+>
+Save
+</Button>
+```
+
 ### DatePicker
 
 ```tsx
