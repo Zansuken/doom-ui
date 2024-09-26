@@ -8,9 +8,14 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
-  "author": "",
+  "author": "Sébastien Doom",
   "license": "ISC",
-  "description": "",
+  "description": "A limited React UI library created for learning purposes.",
+  "keywords": [
+    "react",
+    "ui",
+    "library"
+  ],
   "dependencies": {
     "classnames": "^2.5.1",
     "lodash": "^4.17.21",
