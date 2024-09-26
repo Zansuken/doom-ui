@@ -6,6 +6,10 @@ import { useSearchParams } from "react-router-dom";
 import { debounce } from "lodash";
 import { TableRowType } from "./Table";
 
+type Props = {
+  searchParamEnabled?: boolean;
+};
+
 const debounceSearch = debounce(
   ({
     query,
@@ -34,7 +38,7 @@ const debounceSearch = debounce(
   300
 );
 
-const Search: FC = memo(() => {
+const Search: FC<Props> = memo(({ searchParamEnabled }) => {
   const {
     onClearSearch,
     searchQuery,
@@ -48,7 +52,7 @@ const Search: FC = memo(() => {
   const handleSearch = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       if (setIsSearchLoaded) setIsSearchLoaded(false);
-      setSearchParams({ search: e.target.value });
+      if (searchParamEnabled) setSearchParams({ search: e.target.value });
       debounceSearch({
         query: e.target.value,
         rows,

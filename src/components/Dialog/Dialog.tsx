@@ -1,5 +1,5 @@
 import { FC, useRef } from "react";
-import CrossIcon from "../../assets/icons/cross.svg";
+import CrossIcon from "../../../assets/icons/cross.svg";
 import classNames from "classnames";
 import useClickOutside from "../../hooks/useClickOutside";
 

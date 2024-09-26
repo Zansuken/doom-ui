@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 import { TableContext, TableContextType } from "./TableContext";
 import Select from "../Select/Select";
-import Button from "../../components/ui/Button";
+import Button from "../Button/Button";
 
 const PageNumber: FC<{ number: number }> = ({ number }) => (
   <span>{`Page: ${number}`}</span>
