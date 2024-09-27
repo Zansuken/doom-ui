@@ -3,11 +3,21 @@ import Input from "../Input/Input";
 import { TableContext, TableContextType } from "./TableContext";
 import CrossIcon from "../../../assets/icons/cross.svg";
 import { useSearchParams } from "react-router-dom";
-import { debounce } from "lodash";
 import { TableRowType } from "./Table";
 
 type Props = {
   searchParamEnabled?: boolean;
+};
+
+// Create an equivalent of debounce from lodash
+const debounce = (func: Function, wait: number) => {
+  let timeout: number;
+  return (...args: any) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func(...args);
+    }, wait);
+  };
 };
 
 const debounceSearch = debounce(
