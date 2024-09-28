@@ -1,5 +1,6 @@
 import { FC, InputHTMLAttributes } from "react";
 import classNames from "classnames";
+import classes from "./Input.module.css";
 
 type Props = {
   error?: string;
@@ -18,36 +19,32 @@ const Input: FC<Props> = ({
   type,
   endAdornment,
 }) => (
-  <div className="relative">
-    <div className="flex justify-between">
+  <div className={classes["root"]}>
+    <div className={classes["labelContainer"]}>
       {label && (
         <label
           htmlFor={id}
-          className={classNames("block text-sm font-medium mb-1", {
-            "text-red-500": Boolean(error),
+          className={classNames(classes["label"], {
+            [classes["label-error"]]: Boolean(error),
           })}
         >
           {label}
         </label>
       )}
-      <span className="text-red-500 text-sm">{error}</span>
+      <span className={classNames(classes["label"], classes["label-error"])}>
+        {error}
+      </span>
     </div>
     <input
       type={type}
       id={id}
-      className={classNames(
-        "w-full px-3 py-2 border rounded-md hover:ring-1 hover:ring-black focus:outline-none focus:ring-2 focus:ring-black transition-colors",
-        {
-          "border-red-500 hover:ring-red-500 focus:ring-red-500":
-            Boolean(error),
-        }
-      )}
+      className={classNames(classes["input"], {
+        [classes["input-error"]]: Boolean(error),
+      })}
       {...inputProps}
     />
     {endAdornment && (
-      <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
-        {endAdornment}
-      </div>
+      <div className={classes["endAdornment"]}>{endAdornment}</div>
     )}
   </div>
 );
