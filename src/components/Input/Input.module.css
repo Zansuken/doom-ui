@@ -44,9 +44,10 @@
 
 .endAdornment {
     position: absolute;
-    right: 16px;
+    right: 8px;
+    top: 8px;
     bottom: 14px;
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
 }

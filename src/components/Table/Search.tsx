@@ -4,6 +4,7 @@ import { TableContext, TableContextType } from "./TableContext";
 import CrossIcon from "../../../assets/icons/cross.svg";
 import { useSearchParams } from "react-router-dom";
 import { TableRowType } from "./Table";
+import classes from "./Search.module.css";
 
 type Props = {
   searchParamEnabled?: boolean;
@@ -63,6 +64,7 @@ const Search: FC<Props> = memo(({ searchParamEnabled }) => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       if (setIsSearchLoaded) setIsSearchLoaded(false);
       if (searchParamEnabled) setSearchParams({ search: e.target.value });
+      if (e.target.value.length < 3) return;
       debounceSearch({
         query: e.target.value,
         rows,
@@ -85,10 +87,14 @@ const Search: FC<Props> = memo(({ searchParamEnabled }) => {
       endAdornment={
         searchQuery && (
           <button
-            className="cursor-pointer w-7 h-7 p-2 hover:opacity-70 rounded-full bg-transparent hover:bg-gray-200 focus:outline-none focus:bg-gray-200 transition-colors focus:opacity-70"
+            className={classes["clear-search-btn"]}
             onClick={onClearSearch}
           >
-            <img src={CrossIcon} alt="Clear search" className="w-full h-full" />
+            <img
+              src={CrossIcon}
+              alt="Clear search"
+              className={classes["clear-search-icon"]}
+            />
           </button>
         )
       }

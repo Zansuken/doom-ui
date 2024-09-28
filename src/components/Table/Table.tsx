@@ -5,6 +5,8 @@ import TableHead from "./TableHead";
 import TableBody from "./TableBody";
 import Loader from "./Loader";
 import Search from "./Search";
+import { BrowserRouter as Router } from "react-router-dom";
+import classes from "./Table.module.css";
 
 export type TableColumnType = {
   label: string;
@@ -45,27 +47,35 @@ const Table: FC<Props> = ({
       enableSearch={enableSearch}
       isLoading={isLoading}
     >
-      {(enableSearch || title) && (
-        <div className="flex items-center justify-between mb-6">
-          {title && <h1 className="text-3xl font-bold">{title}</h1>}
-          {enableSearch && <Search />}
-        </div>
-      )}
-      <div className="flex-1 flex flex-col h-full overflow-y-auto">
-        {isLoading ? (
-          <div className="flex-1 flex justify-center items-center">
-            <Loader />
+      <div className={classes["root"]}>
+        {(enableSearch || title) && (
+          <div className={classes["title-container"]}>
+            {title && <h1 className={classes["title"]}>{title}</h1>}
+            {enableSearch && <Search searchParamEnabled />}
           </div>
-        ) : (
-          <table className="flex-1 w-full max-h-[calc(100%-42px-1rem)]">
-            <TableHead />
-            <TableBody />
-          </table>
         )}
+        <div className={classes["table-container"]}>
+          {isLoading ? (
+            <div className={classes["loader-container"]}>
+              <Loader />
+            </div>
+          ) : (
+            <table className={classes["table"]}>
+              <TableHead />
+              <TableBody />
+            </table>
+          )}
+        </div>
+        {enablePagination && <TablePagination />}
       </div>
-      {enablePagination && <TablePagination />}
     </TableProvider>
   );
 };
 
-export default Table;
+const TableExport: FC<Props> = (props) => (
+  <Router>
+    <Table {...props} />
+  </Router>
+);
+
+export default TableExport;

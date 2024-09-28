@@ -1,6 +1,8 @@
 import { FC, useContext } from "react";
 import { TableContext, TableContextType } from "./TableContext";
 import TableRow from "./TableRow";
+import Loader from "./Loader";
+import classes from "./TableBody.module.css";
 
 const TableBody: FC = () => {
   const {
@@ -10,25 +12,27 @@ const TableBody: FC = () => {
     isSearchLoaded,
   } = useContext(TableContext) as TableContextType;
 
+  const showSearchResults = searchQuery && searchQuery?.length > 2;
+
   return (
     <tbody>
-      {!searchQuery &&
+      {!showSearchResults &&
         displayedRows.map((row, index) => <TableRow key={index} row={row} />)}
-      {searchQuery && !isSearchLoaded && (
+      {showSearchResults && !isSearchLoaded && (
         <tr>
-          <td colSpan={100} className="text-center py-4">
-            Loading...
+          <td colSpan={100}>
+            <Loader />
           </td>
         </tr>
       )}
-      {searchQuery &&
+      {showSearchResults &&
         isSearchLoaded &&
         Array.isArray(searchResults) &&
         searchResults.length > 0 &&
         searchResults?.map((row, index) => <TableRow key={index} row={row} />)}
-      {searchQuery && isSearchLoaded && searchResults?.length === 0 && (
+      {showSearchResults && isSearchLoaded && searchResults?.length === 0 && (
         <tr>
-          <td colSpan={100} className="text-center py-4">
+          <td colSpan={100} className={classes["no-results"]}>
             No results found
           </td>
         </tr>

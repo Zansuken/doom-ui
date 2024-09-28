@@ -5,10 +5,12 @@
     color: #fff;
     background-color: rgb(31, 41, 55);
     border-radius: 6px;
+    border: none;
 }
 
 .btn-default:hover {
     background-color: rgb(55, 65, 81);
+    cursor: pointer;
 }
 
 .btn-disabled {

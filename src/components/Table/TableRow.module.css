@@ -1,0 +1,9 @@
+.header-row {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.row {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}

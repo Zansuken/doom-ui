@@ -1,5 +1,6 @@
 import { FC } from "react";
 import classNames from "classnames";
+import classes from "./Select.module.css";
 
 type Option = {
   value: string | number;
@@ -68,29 +69,27 @@ const Select: FC<Props> = ({
 }) => (
   <div>
     <div
-      className={classNames("flex justify-between", {
-        "pb-1.5": Boolean(label),
+      className={classNames(classes["label-container"], {
+        [classes["label-active"]]: Boolean(label),
       })}
     >
       <label
         htmlFor={id}
-        className={classNames("block text-sm font-medium", {
-          "text-red-500": Boolean(error),
+        className={classNames(classes["label"], {
+          [classes["label-error"]]: Boolean(error),
         })}
       >
         {label}
       </label>
-      <span className="text-red-500 text-sm">{error}</span>
+      <span className={classNames(classes["label"], classes["label-error"])}>
+        {error}
+      </span>
     </div>
     <select
       id={id}
-      className={classNames(
-        "w-full hover:cursor-pointer px-3 py-2 rounded-md appearance-none pr-8 pl-4 bg-no-repeat bg-[url('./assets/icons/arrows-up-down.svg')] bg-[length:32px_32px] bg-[right_0_center]",
-        {
-          "border-red-500 focus-within:border-red-500 focus-within:outline-red-500 hover:outline-red-500 outline-transparent":
-            Boolean(error),
-        }
-      )}
+      className={classNames(classes["select"], {
+        [classes["select-error"]]: Boolean(error),
+      })}
       onChange={onChange}
       {...inputProps}
     >

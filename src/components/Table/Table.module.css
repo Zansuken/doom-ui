@@ -1,0 +1,87 @@
+.root {
+    padding: 8px;
+    width: 100%;
+    flex: 1;
+    position: relative;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.table-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
+    border-radius: 4px;
+    min-height: 300px;
+    box-shadow: rgba(17, 17, 26, 0.3) 0px 4px 16px 0px inset, rgba(17, 17, 26, 0.05) 0px 8px 32px 0px;
+}
+
+.loader-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.table {
+    flex: 1;
+    width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+}
+
+tbody {
+  display:block;
+  width: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  height: 100%;
+  max-height: 500px;
+}
+
+thead tr {
+   display: table-row-group;
+}
+
+thead {
+  background: rgb(31, 41, 55);
+  color: #fff;
+}
+
+th, td {
+  padding: 8px 0 8px 16px;
+  text-align: left;
+  min-width: 160px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+tbody td {
+    padding: 16px 0 16px 16px;
+}
+
+tbody td:last-child {
+    width: 100%;
+}
+
+tbody tr {
+  border-bottom: 1px solid rgb(240, 243, 248);
+}
+
+tr:hover {
+  background-color: rgb(55, 65, 81, 0.1);
+}

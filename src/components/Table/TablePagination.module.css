@@ -1,0 +1,32 @@
+.root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.entries-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.entries-label {
+    font-size: 14px;
+    color: #4B5563;
+}
+
+.search-entries-container {
+    display: flex;
+    font-size: 14px;
+    color: #4B5563;
+    gap: 8px;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.actions-container {
+    display: flex;
+    gap: 8px;
+}

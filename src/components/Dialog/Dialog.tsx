@@ -1,7 +1,7 @@
 import { FC, useRef } from "react";
 import CrossIcon from "../../../assets/icons/cross.svg";
-import classNames from "classnames";
 import useClickOutside from "../../hooks/useClickOutside";
+import classes from "./Dialog.module.css";
 
 type Props = {
   /**
@@ -45,25 +45,14 @@ const Dialog: FC<Props> = ({
   if (!open) return null;
 
   return (
-    <div
-      className={classNames(
-        "fixed w-full h-full bg-black bg-opacity-50 flex items-center"
-      )}
-    >
-      <dialog
-        ref={dialogRef}
-        open={open}
-        className="relative w-full max-w-md mx-auto rounded-md p-4 z-50"
-      >
-        <div
-          className="absolute -top-2 -right-2 h-6 w-6 rounded-full bg-black cursor-pointer"
-          onClick={onClose}
-        >
-          <div className="relative w-full h-full flex justify-center items-center">
+    <div className={classes["root"]}>
+      <dialog ref={dialogRef} open={open} className={classes["dialog"]}>
+        <div className={classes["button-close-container"]} onClick={onClose}>
+          <div className={classes["close-icon-container"]}>
             <img
               src={CrossIcon}
               alt="Close"
-              className="h-2 w-2 top-2 right-2 invert"
+              className={classes["close-icon"]}
             />
           </div>
         </div>

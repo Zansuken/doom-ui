@@ -1,50 +1,56 @@
 import classNames from "classnames";
-import { FC, useContext } from "react";
+import { FC, ReactNode, useContext } from "react";
 import { TableContext, TableContextType } from "./TableContext";
+import classes from "./TableCell.module.css";
+import highlightWords from "highlight-words";
 
 type Props = {
   isHeader?: boolean;
   children: React.ReactNode;
 };
 
+const CellType: FC<{
+  isHeader: boolean;
+  children: ReactNode;
+  className: string;
+}> = ({ isHeader, children, className }) => (
+  <>
+    {isHeader ? (
+      <th className={className}>{children}</th>
+    ) : (
+      <td className={className}>{children}</td>
+    )}
+  </>
+);
+
 const TableCell: FC<Props> = ({ isHeader = false, children }) => {
   const { searchQuery } = useContext(TableContext) as TableContextType;
 
-  const highlightText = (text: string) => {
-    if (!searchQuery) return text;
-
-    const regex = new RegExp(`(${searchQuery})`, "gi");
-    const parts = text.split(regex);
-
-    return parts.map((part, index) =>
-      regex.test(part) ? (
-        <p
-          key={index}
-          className="text-ellipsis overflow-visible relative w-fit h-fit font-semibold z-10 whitespace-nowrap"
-        >
-          <span className="after:-z-10 after:bg-yellow-300 after:-ml-1.5 after:-mr-1.5 after:mt-0.5 after:rounded-md after:absolute after:inset-0 after:opacity-50 after:content-[''] after:transform after:transition-all after:duration-300 after:ease-in-out">
-            {part}
-          </span>
-        </p>
-      ) : (
-        <p key={index} className="w-fit whitespace-nowrap">
-          {part}
-        </p>
-      )
-    );
-  };
+  const chunks = highlightWords({
+    text: children as string,
+    query: searchQuery as string,
+  });
 
   return (
-    <td
-      className={classNames("box-border h-fit", {
-        "px-4 py-2 bg-muted text-muted-foreground text-sm": isHeader,
-        "p-4": !isHeader,
+    <CellType
+      isHeader={isHeader}
+      className={classNames(classes["root"], {
+        [classes["root-head"]]: isHeader,
+        [classes["root-no-head"]]: !isHeader,
       })}
     >
-      <div className="w-fit flex flex-row">
-        {highlightText(children as string)}
+      <div className={classes["text-container"]}>
+        {chunks.map(({ text, match, key }) =>
+          match ? (
+            <span className={classes["highlight"]} key={key}>
+              {text}
+            </span>
+          ) : (
+            <span key={key}>{text}</span>
+          )
+        )}
       </div>
-    </td>
+    </CellType>
   );
 };
 

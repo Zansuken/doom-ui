@@ -2,6 +2,7 @@ import { FC, useContext } from "react";
 import { TableContext, TableContextType } from "./TableContext";
 import Select from "../Select/Select";
 import Button from "../Button/Button";
+import classes from "./TablePagination.module.css";
 
 const PageNumber: FC<{ number: number }> = ({ number }) => (
   <span>{`Page: ${number}`}</span>
@@ -22,15 +23,17 @@ const TablePagination: FC = () => {
     TableContext
   ) as TableContextType;
 
+  const showSearchResults = searchQuery && searchQuery?.length > 2;
+
   if (!pagination) {
     return null;
   }
 
   return (
-    <div className="flex justify-between items-center mt-4">
-      {!searchQuery && (
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-700">Show</span>
+    <div className={classes["root"]}>
+      {!showSearchResults && (
+        <div className={classes["entries-container"]}>
+          <span className={classes["entries-label"]}>Show</span>
           <Select
             id="showEntries"
             onChange={pagination?.onShowEntries}
@@ -41,11 +44,11 @@ const TablePagination: FC = () => {
               { value: "100", label: "100" },
             ]}
           />
-          <span className="text-sm text-gray-700">entries</span>
+          <span className={classes["entries-label"]}>entries</span>
         </div>
       )}
-      <div className="text-sm text-gray-700 flex font-semibold gap-2 flex-grow justify-center">
-        {searchQuery ? (
+      <div className={classes["search-entries-container"]}>
+        {showSearchResults ? (
           <SearchResultsLabel amount={searchResults?.length ?? 0} />
         ) : (
           <>
@@ -58,8 +61,8 @@ const TablePagination: FC = () => {
           </>
         )}
       </div>
-      {!searchQuery && (
-        <div className="flex gap-2">
+      {!showSearchResults && (
+        <div className={classes["actions-container"]}>
           {pagination?.currentPage !== 1 && (
             <Button
               type="button"

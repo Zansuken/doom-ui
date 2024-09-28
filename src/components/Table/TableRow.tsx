@@ -1,6 +1,7 @@
 import { FC, Fragment, memo } from "react";
 import { TableRowType } from "./Table";
 import TableCell from "./TableCell";
+import classes from "./TableRow.module.css";
 
 type Props = {
   row?: TableRowType;
@@ -10,11 +11,11 @@ type Props = {
 
 const TableRow: FC<Props> = memo(({ row = [], isHeader, children }) => {
   if (isHeader) {
-    return <tr className="bg-muted text-muted-foreground">{children}</tr>;
+    return <tr className={classes["header-row"]}>{children}</tr>;
   }
 
   return (
-    <tr className="border-b border-gray-200 hover:bg-gray-50">
+    <tr className={classes["row"]}>
       {Object.values(row).map(({ value, hide }, index) => (
         <Fragment key={index}>
           {!hide && <TableCell>{value}</TableCell>}

@@ -1,0 +1,45 @@
+
+.first-part {
+    text-overflow: ellipsis;
+    overflow: visible;
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    font-weight: 600;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+.highlight {
+    background-color: rgb(245, 229, 11, 0.5);
+    padding: 0 4px;
+    margin-left: -4px;
+    margin-right: -4px;
+    border-radius: 4px;
+}
+
+.second-part {
+    width: fit-content;
+    white-space: nowrap;
+}
+
+
+.root {
+    box-sizing: border-box;
+    height: fit-content;
+}
+
+.root-head {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.root-no-head {
+    padding: 1rem;
+}
+
+.text-container {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+}

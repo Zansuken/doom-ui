@@ -1,10 +1,20 @@
-import { FC } from "react";
+import { FC, useLayoutEffect, useState } from "react";
 
 const Loader: FC = () => {
+  const [trailingDots, setTrailingDots] = useState("");
+
+  useLayoutEffect(() => {
+    const interval = setInterval(() => {
+      setTrailingDots((prev) => (prev.length >= 3 ? "" : prev + "."));
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="loader">
-      <div className="spinner"></div>
-      <div className="text">Loading...</div>
+    <div>
+      <span>Loading</span>
+      <span>{trailingDots}</span>
     </div>
   );
 };
