@@ -47,10 +47,10 @@
 }
 
 @layer components {
-  .btn-default {
+  .btn-default1 {
     @apply px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-700;
   }
-  .btn-disabled {
+  .btn-disabled1 {
     @apply px-4 py-2 text-sm font-medium text-white bg-gray-400 rounded-md cursor-not-allowed;
   }
 }
