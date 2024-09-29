@@ -12,7 +12,7 @@ type Props = {
 
 // Create an equivalent of debounce from lodash
 const debounce = (func: Function, wait: number) => {
-  let timeout: number;
+  let timeout: NodeJS.Timeout;
   return (...args: any) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
