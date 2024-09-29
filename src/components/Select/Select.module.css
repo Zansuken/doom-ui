@@ -1,3 +1,7 @@
+.root {
+    position: relative;
+}
+
 .label-container {
     display: flex;
     justify-content: space-between;
@@ -27,10 +31,6 @@
     appearance: none;
     padding-right: 2rem;
     padding-left: 1rem;
-    background-image: url('./assets/icons/arrows-up-down.svg');
-    background-size: 32px 32px;
-    background-position: right 0 center;
-    background-repeat: no-repeat;
     border: 1px solid #D1D5DB;
 }
 
@@ -47,4 +47,14 @@
 .select-error:focus, .select-error:hover {
     border-color: #EF4444;
     box-shadow: 0 0 0 1px #EF4444;
+}
+
+.arrows-icon {
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    width: 24px;
+    height: 24px;
 }

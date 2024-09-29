@@ -1,6 +1,7 @@
 import { FC } from "react";
 import classNames from "classnames";
 import classes from "./Select.module.css";
+import ArrowsIcon from "../../../assets/icons/arrows-up-down.svg";
 
 type Option = {
   value: string | number;
@@ -67,7 +68,7 @@ const Select: FC<Props> = ({
   options,
   onChange,
 }) => (
-  <div>
+  <div className={classes["root"]}>
     <div
       className={classNames(classes["label-container"], {
         [classes["label-active"]]: Boolean(label),
@@ -104,6 +105,11 @@ const Select: FC<Props> = ({
         </option>
       ))}
     </select>
+    <img
+      className={classes["arrows-icon"]}
+      src={ArrowsIcon}
+      alt="Arrows Icon"
+    />
   </div>
 );
 
