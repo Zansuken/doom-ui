@@ -1,6 +1,6 @@
 {
   "name": "doom-ui",
-  "version": "0.1.92",
+  "version": "0.1.93",
   "type": "module",
   "files": [
     "dist"
@@ -13,6 +13,7 @@
       "require": "./dist/doom-ui.umd.cjs"
     }
   },
+  "types": "./dist/doom-ui.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
