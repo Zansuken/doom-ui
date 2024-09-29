@@ -6,7 +6,7 @@ import highlightWords from "highlight-words";
 
 type Props = {
   isHeader?: boolean;
-  children: React.ReactNode;
+  value: string;
 };
 
 const CellType: FC<{
@@ -23,11 +23,11 @@ const CellType: FC<{
   </>
 );
 
-const TableCell: FC<Props> = ({ isHeader = false, children }) => {
+const TableCell: FC<Props> = ({ isHeader = false, value }) => {
   const { searchQuery } = useContext(TableContext) as TableContextType;
 
   const chunks = highlightWords({
-    text: children as string,
+    text: value,
     query: searchQuery as string,
   });
 

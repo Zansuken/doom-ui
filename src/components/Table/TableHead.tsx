@@ -10,9 +10,7 @@ const TableHead: FC = () => {
     <thead>
       <TableRow isHeader>
         {columns.map((column) => (
-          <TableCell key={column.key} isHeader>
-            {column.label}
-          </TableCell>
+          <TableCell key={column.key} isHeader value={column.label} />
         ))}
       </TableRow>
     </thead>

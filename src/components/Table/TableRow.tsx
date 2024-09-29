@@ -17,9 +17,7 @@ const TableRow: FC<Props> = memo(({ row = [], isHeader, children }) => {
   return (
     <tr className={classes["row"]}>
       {Object.values(row).map(({ value, hide }, index) => (
-        <Fragment key={index}>
-          {!hide && <TableCell>{value}</TableCell>}
-        </Fragment>
+        <Fragment key={index}>{!hide && <TableCell value={value} />}</Fragment>
       ))}
     </tr>
   );
