@@ -28,7 +28,7 @@ const TableCell: FC<Props> = ({ isHeader = false, value = "" }) => {
 
   const chunks = highlightWords({
     text: value,
-    query: searchQuery as string,
+    query: (searchQuery as string) ?? "",
   });
 
   return (
