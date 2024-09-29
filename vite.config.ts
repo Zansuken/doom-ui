@@ -9,7 +9,11 @@ export default defineConfig({
   plugins: [
     react(),
     libInjectCss(),
-    dts({ include: ["src", "lib"], rollupTypes: true }),
+    dts({
+      include: ["src", "lib"],
+      rollupTypes: true,
+      tsconfigPath: "./tsconfig.app.json",
+    }),
   ],
   server: {
     open: true,
