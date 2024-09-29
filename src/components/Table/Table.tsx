@@ -29,6 +29,7 @@ type Props = {
   enableSearch?: boolean;
   isLoading?: boolean;
   title?: string;
+  useRouter?: boolean;
 };
 
 const Table: FC<Props> = ({
@@ -73,9 +74,15 @@ const Table: FC<Props> = ({
 };
 
 const TableExport: FC<Props> = (props) => (
-  <Router>
-    <Table {...props} />
-  </Router>
+  <>
+    {props.useRouter ? (
+      <Router>
+        <Table {...props} />
+      </Router>
+    ) : (
+      <Table {...props} />
+    )}
+  </>
 );
 
 export default TableExport;
