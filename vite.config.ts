@@ -19,7 +19,7 @@ export default defineConfig({
       entry: resolve(__dirname, "src/index.tsx"),
       name: "doom-ui",
       fileName: "doom-ui",
-      formats: ["es", "cjs", "umd"],
+      formats: ["es", "cjs"],
     },
     rollupOptions: {
       external: ["react", "react-dom"],
