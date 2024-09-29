@@ -23,7 +23,7 @@ const CellType: FC<{
   </>
 );
 
-const TableCell: FC<Props> = ({ isHeader = false, value }) => {
+const TableCell: FC<Props> = ({ isHeader = false, value = "" }) => {
   const { searchQuery } = useContext(TableContext) as TableContextType;
 
   const chunks = highlightWords({
