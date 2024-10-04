@@ -6,7 +6,6 @@ import {
   useMemo,
   useState,
 } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
 import { TableContextType, TableRowType } from "../../types";
 
 const TableContext = createContext<TableContextType | undefined>(undefined);
@@ -20,14 +19,17 @@ const TableProvider: FC<TableContextType> = ({
   isLoading,
   children,
 }) => {
+  const location = window.location;
+  const searchParams = new URLSearchParams(location.search);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [showEntries, setShowEntries] = useState(10);
   const [displayedRows, setDisplayedRows] = useState<TableRowType[]>([]);
+  const [currentSearch, setCurrentSearch] = useState<string>(
+    searchParams.get("search") || ""
+  );
   const [searchResults, setSearchResults] = useState<TableRowType[]>([]);
   const [isSearchLoaded, setIsSearchLoaded] = useState(false);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
 
   const maxPage = Math.ceil(rows.length / showEntries);
   const totalEntries = rows.length;
@@ -69,21 +71,25 @@ const TableProvider: FC<TableContextType> = ({
     setDisplayedRows(getCurrentPageRows());
   }, [currentPage, getCurrentPageRows]);
 
-  const currentSearch = useMemo(() => {
-    const searchQuery = searchParams.get("search");
-
-    return searchQuery;
-  }, [searchParams]);
-
   const onClearSearch = useCallback(() => {
+    const location = window.location;
     const searchParams = new URLSearchParams(location.search);
     searchParams.delete("search");
 
-    setSearchParams(searchParams);
+    // Remove search query from URL
 
+    window.history.pushState(
+      {},
+      "",
+      `${location.pathname}${
+        searchParams.toString() ? `?${searchParams.toString()}` : ""
+      }`
+    );
+
+    setCurrentSearch("");
     setSearchResults([]);
     setShowEntries(10);
-  }, [location.search, setSearchParams]);
+  }, [location.search]);
 
   const pagination = useMemo(
     () => ({
@@ -123,7 +129,25 @@ const TableProvider: FC<TableContextType> = ({
 
   useEffect(() => {
     if (!currentSearch) {
-      onClearSearch();
+      searchParams.delete("search");
+
+      // Remove search query from URL
+      window.history.pushState(
+        {},
+        "",
+        `${location.pathname}${
+          searchParams.toString() ? `?${searchParams.toString()}` : ""
+        }`
+      );
+    } else {
+      // update search query in URL
+      searchParams.set("search", currentSearch);
+
+      window.history.pushState(
+        {},
+        "",
+        `${location.pathname}?${searchParams.toString()}`
+      );
     }
   }, [currentSearch]);
 
@@ -145,6 +169,7 @@ const TableProvider: FC<TableContextType> = ({
           isSearchLoaded,
         }),
         searchQuery: currentSearch,
+        setSearchQuery: setCurrentSearch,
         isLoading,
         children,
       }}

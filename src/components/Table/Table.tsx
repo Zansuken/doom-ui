@@ -5,7 +5,6 @@ import TableHead from "./TableHead";
 import TableBody from "./TableBody";
 import Loader from "./Loader";
 import Search from "./Search";
-import { BrowserRouter as Router } from "react-router-dom";
 import classes from "./Table.module.css";
 import { TableColumnType, TableRowType } from "../../types";
 
@@ -36,7 +35,6 @@ type Props = {
   enableSearch?: boolean;
   isLoading?: boolean;
   title?: string;
-  useRouter?: boolean;
 };
 
 const Table: FC<Props> = ({
@@ -98,16 +96,6 @@ const Table: FC<Props> = ({
  *    isLoading={isLoading}
  * />
  */
-const TableExport: FC<Props> = (props) => (
-  <>
-    {props.useRouter ? (
-      <Router>
-        <Table {...props} />
-      </Router>
-    ) : (
-      <Table {...props} />
-    )}
-  </>
-);
+const TableExport: FC<Props> = (props) => <Table {...props} />;
 
 export default TableExport;

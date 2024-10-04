@@ -1,8 +1,7 @@
-import { FC, memo, useContext, useCallback } from "react";
+import { FC, memo, useContext, useCallback, useEffect } from "react";
 import Input from "../Input/Input";
 import { TableContext } from "./TableContext";
 import CrossIcon from "../../../assets/icons/cross.svg";
-import { useSearchParams } from "react-router-dom";
 import classes from "./Search.module.css";
 import { TableContextType, TableRowType } from "../../types";
 
@@ -53,17 +52,26 @@ const Search: FC<Props> = memo(({ searchParamEnabled }) => {
   const {
     onClearSearch,
     searchQuery,
+    setSearchQuery,
     setSearchResults,
     rows,
     setIsSearchLoaded,
   } = useContext(TableContext) as TableContextType;
 
-  const [, setSearchParams] = useSearchParams();
+  const setSearchParams = (searchParams: URLSearchParams) => {
+    window.history.pushState(
+      {},
+      "",
+      `${location.pathname}?${searchParams.toString()}`
+    );
+  };
 
   const handleSearch = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       if (setIsSearchLoaded) setIsSearchLoaded(false);
-      if (searchParamEnabled) setSearchParams({ search: e.target.value });
+      if (searchParamEnabled && setSearchQuery) {
+        setSearchQuery(e.target.value);
+      }
       if (e.target.value.length < 3) return;
       debounceSearch({
         query: e.target.value,
@@ -74,6 +82,17 @@ const Search: FC<Props> = memo(({ searchParamEnabled }) => {
     },
     [setIsSearchLoaded, setSearchParams, rows, setSearchResults]
   );
+
+  useEffect(() => {
+    if (searchQuery) {
+      debounceSearch({
+        query: searchQuery,
+        rows,
+        setSearchResults,
+        setIsSearchLoaded,
+      });
+    }
+  }, []);
 
   return (
     <Input

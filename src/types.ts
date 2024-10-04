@@ -63,6 +63,7 @@ export type TableContextType = {
   isSearchLoaded?: boolean;
   searchResults?: TableRowType[];
   searchQuery?: string | null;
+  setSearchQuery?: (query: string) => void;
   isLoading?: boolean;
   children: React.ReactNode;
 };
