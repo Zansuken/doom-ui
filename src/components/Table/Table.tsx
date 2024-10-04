@@ -7,34 +7,7 @@ import Loader from "./Loader";
 import Search from "./Search";
 import { BrowserRouter as Router } from "react-router-dom";
 import classes from "./Table.module.css";
-
-/**
- * Represents a column in a table.
- *
- * @typedef {Object} TableColumnType
- * @property {string} label - The label to be displayed in the table header.
- * @property {string} key - The key to be used to access the value in the row object.
- */
-export type TableColumnType = {
-  label: string;
-  key: string;
-};
-
-/**
- * Represents a value in a table row.
- *
- * @typedef {Object} TableRowValue
- * @property {string} value - The value to be displayed in the table row.
- * @property {boolean} [hide] - Optional flag to indicate whether the value should be hidden.
- */
-export type TableRowValue = {
-  value: string;
-  hide?: boolean;
-};
-
-export type TableRowType = {
-  [key: string]: TableRowValue;
-};
+import { TableColumnType, TableRowType } from "../../types";
 
 type Props = {
   /**

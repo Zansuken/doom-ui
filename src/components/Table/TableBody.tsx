@@ -1,8 +1,9 @@
 import { FC, useContext } from "react";
-import { TableContext, TableContextType } from "./TableContext";
+import { TableContext } from "./TableContext";
 import TableRow from "./TableRow";
 import Loader from "./Loader";
 import classes from "./TableBody.module.css";
+import { TableContextType } from "../../types";
 
 const TableBody: FC = () => {
   const {

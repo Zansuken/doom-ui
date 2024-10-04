@@ -2,11 +2,7 @@ import { FC } from "react";
 import classNames from "classnames";
 import classes from "./Select.module.css";
 import ArrowsIcon from "../../../assets/icons/arrows-up-down.svg";
-
-type Option = {
-  value: string | number;
-  label: string;
-};
+import { SelectOptionType } from "../../types";
 
 type Props = {
   /**
@@ -24,7 +20,7 @@ type Props = {
    */
   inputProps?: React.SelectHTMLAttributes<HTMLSelectElement>;
   label?: string;
-  options: Option[];
+  options: SelectOptionType[];
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 

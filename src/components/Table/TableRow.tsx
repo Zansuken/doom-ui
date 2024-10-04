@@ -1,5 +1,5 @@
 import { FC, Fragment, memo } from "react";
-import { TableRowType } from "./Table";
+import { TableRowType } from "../../types";
 import TableCell from "./TableCell";
 import classes from "./TableRow.module.css";
 

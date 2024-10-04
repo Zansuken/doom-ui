@@ -1,8 +1,9 @@
 import classNames from "classnames";
 import { FC, ReactNode, useContext } from "react";
-import { TableContext, TableContextType } from "./TableContext";
+import { TableContextType } from "../../types";
 import classes from "./TableCell.module.css";
 import highlightWords from "highlight-words";
+import { TableContext } from "./TableContext";
 
 type Props = {
   isHeader?: boolean;

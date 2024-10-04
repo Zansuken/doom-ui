@@ -1,5 +1,6 @@
 import { FC, useContext } from "react";
-import { TableContext, TableContextType } from "./TableContext";
+import { TableContext } from "./TableContext";
+import { TableContextType } from "../../types";
 import TableCell from "./TableCell";
 import TableRow from "./TableRow";
 

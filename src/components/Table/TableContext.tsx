@@ -6,37 +6,8 @@ import {
   useMemo,
   useState,
 } from "react";
-import { TableColumnType, TableRowType } from "./Table";
 import { useLocation, useSearchParams } from "react-router-dom";
-
-type Pagination = {
-  currentPage: number;
-  totalEntries: number;
-  showEntries: number;
-  onShowEntries: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  onPageNext: () => void;
-  onPagePrev: () => void;
-  isPrevDisabled: boolean;
-  isNextDisabled: boolean;
-};
-
-export type TableContextType = {
-  tableName?: string;
-  columns: TableColumnType[];
-  rows: TableRowType[];
-  displayedRows?: TableRowType[];
-  enablePagination?: boolean;
-  pagination?: Pagination;
-  enableSearch?: boolean;
-  onClearSearch?: () => void;
-  setSearchResults?: (rows: TableRowType[]) => void;
-  setIsSearchLoaded?: (isLoaded: boolean) => void;
-  isSearchLoaded?: boolean;
-  searchResults?: TableRowType[];
-  searchQuery?: string | null;
-  isLoading?: boolean;
-  children: React.ReactNode;
-};
+import { TableContextType, TableRowType } from "../../types";
 
 const TableContext = createContext<TableContextType | undefined>(undefined);
 

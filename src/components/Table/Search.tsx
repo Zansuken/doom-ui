@@ -1,10 +1,10 @@
 import { FC, memo, useContext, useCallback } from "react";
 import Input from "../Input/Input";
-import { TableContext, TableContextType } from "./TableContext";
+import { TableContext } from "./TableContext";
 import CrossIcon from "../../../assets/icons/cross.svg";
 import { useSearchParams } from "react-router-dom";
-import { TableRowType } from "./Table";
 import classes from "./Search.module.css";
+import { TableContextType, TableRowType } from "../../types";
 
 type Props = {
   searchParamEnabled?: boolean;
