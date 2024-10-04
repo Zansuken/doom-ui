@@ -18,7 +18,7 @@ type Props = {
    * when the select input is invalid.
    */
   error?: string;
-  id: string;
+  id?: string;
   /**
    * Additional props to be spread on the select input.
    */

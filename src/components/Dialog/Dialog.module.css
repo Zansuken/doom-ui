@@ -22,6 +22,7 @@
     border-radius: 0.5rem;
     padding: 1rem;
     z-index: 50;
+    border: none;
 }
 
 .button-close-container {

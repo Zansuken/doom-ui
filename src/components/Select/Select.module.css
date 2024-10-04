@@ -52,8 +52,7 @@
 .arrows-icon {
     position: absolute;
     right: 2px;
-    top: 50%;
-    transform: translateY(-50%);
+    bottom: 5px;
     pointer-events: none;
     width: 24px;
     height: 24px;

@@ -150,6 +150,12 @@ const TableProvider: FC<TableContextType> = ({
     }
   }, [currentPage, enablePagination, rows, showEntries]);
 
+  useEffect(() => {
+    if (!currentSearch) {
+      onClearSearch();
+    }
+  }, [currentSearch]);
+
   return (
     <TableContext.Provider
       value={{

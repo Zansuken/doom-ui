@@ -3,7 +3,7 @@ import Input from "../Input/Input";
 
 type Props = {
   error?: string;
-  id: string;
+  id?: string;
   inputProps?: InputHTMLAttributes<HTMLInputElement>;
   label?: string;
   endAdornment?: React.ReactNode;

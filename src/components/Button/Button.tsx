@@ -1,14 +1,19 @@
-import { FC } from "react";
+import { ButtonHTMLAttributes, FC } from "react";
 import classes from "./Button.module.css";
 
 type Props = {
-  buttonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
+  buttonProps?: ButtonHTMLAttributes<HTMLButtonElement>;
   children: string;
   onClick?: () => void;
-  type: "button" | "submit";
+  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
 };
 
-const Button: FC<Props> = ({ buttonProps, type, onClick, children }) => {
+const Button: FC<Props> = ({
+  buttonProps,
+  type = "button",
+  onClick,
+  children,
+}) => {
   return (
     <button
       type={type}

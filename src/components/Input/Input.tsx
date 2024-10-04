@@ -4,10 +4,10 @@ import classes from "./Input.module.css";
 
 type Props = {
   error?: string;
-  id: string;
+  id?: string;
   inputProps?: InputHTMLAttributes<HTMLInputElement>;
   label?: string;
-  type: InputHTMLAttributes<HTMLInputElement>["type"];
+  type?: InputHTMLAttributes<HTMLInputElement>["type"];
   endAdornment?: React.ReactNode;
 };
 
@@ -16,25 +16,27 @@ const Input: FC<Props> = ({
   id,
   inputProps,
   label,
-  type,
+  type = "text",
   endAdornment,
 }) => (
   <div className={classes["root"]}>
-    <div className={classes["labelContainer"]}>
-      {label && (
-        <label
-          htmlFor={id}
-          className={classNames(classes["label"], {
-            [classes["label-error"]]: Boolean(error),
-          })}
-        >
-          {label}
-        </label>
-      )}
-      <span className={classNames(classes["label"], classes["label-error"])}>
-        {error}
-      </span>
-    </div>
+    {(label || error) && (
+      <div className={classes["label-container"]}>
+        {label && (
+          <label
+            htmlFor={id}
+            className={classNames(classes["label"], {
+              [classes["label-error"]]: Boolean(error),
+            })}
+          >
+            {label}
+          </label>
+        )}
+        <span className={classNames(classes["label"], classes["label-error"])}>
+          {error}
+        </span>
+      </div>
+    )}
     <input
       type={type}
       id={id}

@@ -2,7 +2,7 @@
     position: relative;
 }
 
-.labelContainer {
+.label-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,10 +28,12 @@
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     border: 1px solid #d9d9d9;
     outline: none;
+    box-sizing: border-box;
 }
 
 .input:hover {
-    outline: 1px black solid;
+    outline: 2px black solid;
+    outline-offset: -2px;
 }
 
 .input-error {
@@ -39,13 +41,13 @@
 }
 
 .input-error:hover {
-    outline: 1px #ff4d4f solid;
+    outline: 2px #ff4d4f solid;
 }
 
 .endAdornment {
     position: absolute;
-    right: 8px;
-    top: 8px;
+    right: 6px;
+    top: 5px;
     bottom: 14px;
     width: 24px;
     height: 24px;

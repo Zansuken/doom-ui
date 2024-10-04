@@ -1,8 +1,8 @@
 .root {
-    padding: 8px;
     width: 100%;
     flex: 1;
     position: relative;
+    box-sizing: border-box;
 }
 
 .title-container {
@@ -44,7 +44,7 @@
     border-collapse: collapse;
 }
 
-tbody {
+.table tbody {
   display:block;
   width: 100%;
   overflow: auto;
@@ -53,16 +53,16 @@ tbody {
   max-height: 500px;
 }
 
-thead tr {
+.table thead tr {
    display: table-row-group;
 }
 
-thead {
+.table thead {
   background: rgb(31, 41, 55);
   color: #fff;
 }
 
-th, td {
+.table th, .table td {
   padding: 8px 0 8px 16px;
   text-align: left;
   min-width: 160px;
@@ -70,18 +70,44 @@ th, td {
   box-sizing: border-box;
 }
 
-tbody td {
+.table tbody td {
     padding: 16px 0 16px 16px;
 }
 
-tbody td:last-child {
+.table tbody td:last-child {
     width: 100%;
 }
 
-tbody tr {
+.table tbody tr {
   border-bottom: 1px solid rgb(240, 243, 248);
 }
 
-tr:hover {
+.table tbody tr:hover {
   background-color: rgb(55, 65, 81, 0.1);
+}
+
+/* custom scrollbar */
+
+.table-container::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F4F4F5;
+  border-radius: 6px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background-color: #1F2937;
+  border-radius: 6px;
+  border: 3px solid #F4F4F5;
+}
+
+.table tbody::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F4F4F5;
+  border-radius: 6px;
+}
+
+.table tbody::-webkit-scrollbar-thumb {
+  background-color: #1F2937;
+  border-radius: 6px;
+  border: 3px solid #F4F4F5;
 }
