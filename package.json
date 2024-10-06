@@ -28,6 +28,9 @@
     "ui",
     "library"
   ],
+  "engines": {
+    "node": "^14.17.0"
+  },
   "dependencies": {
     "classnames": "^2.5.1",
     "highlight-words": "^2.0.0",

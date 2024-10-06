@@ -4,6 +4,10 @@ Doom UI is a small UI library published for training purposes. This library prov
 
 ## Installation
 
+Minimum requirements:
+
+* Node.js 14.17.0 or higher
+
 To install Doom UI, use npm:
 
 ```bash
