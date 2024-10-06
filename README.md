@@ -1,6 +1,6 @@
 # Doom UI
 
-Doom UI is a powerful and flexible UI library for building modern web applications. This library provides a set of reusable components that can be easily integrated into your projects.
+Doom UI is a small UI library published for training purposes. This library provides a set of reusable components that can be integrated into your projects.
 
 ## Installation
 
@@ -14,7 +14,7 @@ npm install doom-ui
 
 ### Button
 
-![alt text](image.png)
+![Button](https://imgur.com/ZYWqHsi)
 
 This component renders a customizable button element.
 
@@ -38,7 +38,7 @@ Save
 
 ### Input
 
-![alt text](image-1.png)
+![Input](https://imgur.com/24wSBPY)
 
 This component renders a customizable input element.
 
@@ -65,7 +65,7 @@ Props:
 
 ### DatePicker
 
-![alt text](image-3.png)
+![DatePicker](https://imgur.com/Ex8FvrD)
 
 This component renders a customizable date picker element. (Using Input component internally)
 
@@ -90,7 +90,7 @@ Props:
 
 ### Dialog
 
-![alt text](image-4.png)
+![Dialog](https://imgur.com/undefined)
 
 This component renders a customizable dialog element.
 
@@ -116,7 +116,7 @@ const ConfirmationDialog: FC<Props> = ({ open, onClose }) => {
 
 ### Select
 
-![alt text](image-2.png)
+![Select](https://imgur.com/qYaoaxn)
 
 This component renders a customizable select element.
 
@@ -153,7 +153,7 @@ type SelectOption = {
 
 ### Table
 
-![alt text](image-5.png)
+![Table](https://imgur.com/hwAIJAU)
 
 This component renders a customizable table element.
 Uses a react context to manage the state of the table.
