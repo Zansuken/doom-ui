@@ -34,7 +34,9 @@ const TablePagination: FC = () => {
     <div className={classes["root"]}>
       {!showSearchResults && (
         <div className={classes["entries-container"]}>
-          <span className={classes["entries-label"]}>Show</span>
+          <label htmlFor="showEntries" className={classes["entries-label"]}>
+            Show entries
+          </label>
           <Select
             id="showEntries"
             onChange={pagination?.onShowEntries}
@@ -45,7 +47,6 @@ const TablePagination: FC = () => {
               { value: "100", label: "100" },
             ]}
           />
-          <span className={classes["entries-label"]}>entries</span>
         </div>
       )}
       <div className={classes["search-entries-container"]}>

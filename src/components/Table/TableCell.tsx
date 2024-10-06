@@ -17,9 +17,13 @@ const CellType: FC<{
 }> = ({ isHeader, children, className }) => (
   <>
     {isHeader ? (
-      <th className={className}>{children}</th>
+      <th className={className} scope="col">
+        {children}
+      </th>
     ) : (
-      <td className={className}>{children}</td>
+      <td className={className} scope="row">
+        {children}
+      </td>
     )}
   </>
 );
