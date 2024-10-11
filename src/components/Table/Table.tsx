@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { TableProvider } from "./TableContext";
 import TablePagination from "./TablePagination";
 import TableHead from "./TableHead";
@@ -7,6 +7,7 @@ import Loader from "./Loader";
 import Search from "./Search";
 import classes from "./Table.module.css";
 import { TableColumnType, TableRowType } from "../../types";
+import TableStateMessage from "./TableStateMessage";
 
 type Props = {
   /**
@@ -37,6 +38,37 @@ type Props = {
   title?: string;
 };
 
+const TableContent: FC<Props> = memo(
+  ({ enablePagination, enableSearch, isLoading, title }) => {
+    return (
+      <div className={classes["root"]}>
+        {(enableSearch || title) && (
+          <div className={classes["title-container"]}>
+            {title && <h1 className={classes["title"]}>{title}</h1>}
+            {enableSearch && <Search searchParamEnabled />}
+          </div>
+        )}
+        <div className={classes["table-container"]}>
+          {isLoading ? (
+            <div className={classes["loader-container"]}>
+              <Loader />
+            </div>
+          ) : (
+            <>
+              <table className={classes["table"]}>
+                <TableHead />
+                <TableBody />
+              </table>
+              <TableStateMessage />
+            </>
+          )}
+        </div>
+        {enablePagination && <TablePagination />}
+      </div>
+    );
+  }
+);
+
 const Table: FC<Props> = ({
   columns,
   rows,
@@ -53,27 +85,14 @@ const Table: FC<Props> = ({
       enableSearch={enableSearch}
       isLoading={isLoading}
     >
-      <div className={classes["root"]}>
-        {(enableSearch || title) && (
-          <div className={classes["title-container"]}>
-            {title && <h1 className={classes["title"]}>{title}</h1>}
-            {enableSearch && <Search searchParamEnabled />}
-          </div>
-        )}
-        <div className={classes["table-container"]}>
-          {isLoading ? (
-            <div className={classes["loader-container"]}>
-              <Loader />
-            </div>
-          ) : (
-            <table className={classes["table"]}>
-              <TableHead />
-              <TableBody />
-            </table>
-          )}
-        </div>
-        {enablePagination && <TablePagination />}
-      </div>
+      <TableContent
+        columns={columns}
+        rows={rows}
+        enablePagination={enablePagination}
+        enableSearch={enableSearch}
+        isLoading={isLoading}
+        title={title}
+      />
     </TableProvider>
   );
 };

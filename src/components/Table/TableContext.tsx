@@ -42,11 +42,11 @@ const TableProvider: FC<TableContextType> = ({
   }, [currentPage, rows, showEntries]);
 
   const getIsPrevDisabled = useCallback(() => {
-    return currentPage === 1;
+    return currentPage === 1 || totalEntries === 0;
   }, [currentPage]);
 
   const getIsNextDisabled = useCallback(() => {
-    return currentPage === maxPage;
+    return currentPage === maxPage || totalEntries === 0;
   }, [currentPage, maxPage]);
 
   const onShowEntries = useCallback(

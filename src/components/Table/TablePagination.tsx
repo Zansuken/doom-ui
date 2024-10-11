@@ -10,9 +10,13 @@ const PageNumber: FC<{ number: number }> = ({ number }) => (
 );
 const PageEntries: FC<{ from: number; to: number }> = ({ from, to }) => (
   <div>
-    <span>
-      Entries: {from} &rarr; {to}
-    </span>
+    {to > 0 ? (
+      <span>
+        Entries: {from} &rarr; {to}
+      </span>
+    ) : (
+      <span>No entries</span>
+    )}
   </div>
 );
 const SearchResultsLabel: FC<{ amount: number }> = ({ amount }) => (
@@ -57,8 +61,11 @@ const TablePagination: FC = () => {
             <PageNumber number={pagination?.currentPage} />
             <span>|</span>
             <PageEntries
-              from={pagination?.currentPage * pagination?.showEntries}
-              to={pagination?.totalEntries}
+              from={(pagination?.currentPage - 1) * pagination?.showEntries + 1}
+              to={Math.min(
+                pagination?.currentPage * pagination?.showEntries,
+                pagination?.totalEntries
+              )}
             />
           </>
         )}

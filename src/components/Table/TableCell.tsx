@@ -47,7 +47,10 @@ const TableCell: FC<Props> = ({ isHeader = false, value = "" }) => {
       <div className={classes["text-container"]}>
         {chunks.map(({ text, match, key }) =>
           match ? (
-            <span className={classes["highlight"]} key={key}>
+            <span
+              className={classNames({ [classes["highlight"]]: !isHeader })}
+              key={key}
+            >
               {text}
             </span>
           ) : (
