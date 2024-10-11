@@ -39,7 +39,7 @@ const TablePagination: FC = () => {
       {!showSearchResults && (
         <div className={classes["entries-container"]}>
           <label htmlFor="showEntries" className={classes["entries-label"]}>
-            Show entries
+            Show entries (total: {pagination?.totalEntries ?? 0}):
           </label>
           <Select
             id="showEntries"
