@@ -30,6 +30,7 @@ const Input: FC<Props> = ({
             })}
           >
             {label}
+            {inputProps?.required && "*"}
           </label>
         )}
         <span className={classNames(classes["label"], classes["label-error"])}>
